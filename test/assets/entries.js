@@ -1,4 +1,5 @@
-const cYear = (new Date()).getFullYear();
+//const cYear = (new Date()).getFullYear();
+const cYear = 2018
 const timezoneDiff = date => ((-new Date(date).getTimezoneOffset() / 60) * 3600000);
 const resolveDate = (date, old = false, isUTC = false) => {
   if (isUTC) return new Date(date);
@@ -884,7 +885,28 @@ const entires = [
     what: 'Windows with UNIX style file #1',
   },
   {
-    source: 'total 871',
+    source: '-rw-r--r--   1 300794   AD\\Domain Users     6148 Sep 19 06:17 .DS_Store',
+    expected: {
+      type: '-',
+      name: '.DS_Store',
+      target: undefined,
+      sticky: false,
+      rights: {
+        user: 'rw',
+        group: 'r',
+        other: 'r',
+      },
+      acl: false,
+      owner: '300794',
+      group: 'AD\\Domain Users',
+      size: 6148,
+      pointer: undefined,
+      date: resolveDate(`${cYear}-09-19T06:17:00.000Z`, false, true),
+    },
+    what: 'macOS file',
+  },
+  {
+    source: 'total 872',
     expected: null,
     what: 'Ignored line',
   },
